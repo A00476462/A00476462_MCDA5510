@@ -1,9 +1,10 @@
 # A00476462_MCDA5510
 ## overall introduction for 5510 .Net assignment
 
-This is a C# program to traverse a directory structure of CSV files that contains CSV files with customer info and combines all CSV files into a CSV file named out.csv. \
-Sample Data: is used for traversing dierectory. \
-ProgAssign1: including Assignment1 folder, logs folder and output folder. \
+This is a C# program to traverse a directory structure of CSV files that contains CSV files with customer info and combines all CSV files into a CSV file named out.csv.  
+Sample Data: is used for traversing dierectory.  
+ProgAssign1: including Assignment1 folder, logs folder and output folder.  
+
 
 
 ## important functions:
