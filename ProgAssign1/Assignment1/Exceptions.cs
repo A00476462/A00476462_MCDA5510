@@ -32,24 +32,36 @@ namespace Assignment1
             long skip_rows_num = 0, valid_rows_num = -1;
             for (int i = 0; i < fileList.Length; i++)
             {
+                // get content
                 string filepath = fileList[i];
-                //Console.WriteLine("File:" + filepath);
                 List<string[]> csvContent = parser.parse_getContent(filepath);
+
+                // get date
+                string[] tmps = filepath.Split(@"\");
+                Array.Reverse(tmps);
+                string dateStr = String.Format("{0}/{1}/{2}", tmps[3], tmps[2].PadLeft(2, '0'), tmps[1].PadLeft(2, '0'));
+
+                // write info
                 for (int j = 0; j < csvContent.Count; j++)
                 {
-                    if (i != 0 && j == 0) 
-                    {
-                        continue;
-                    }
                     string[] row = csvContent[j];
-                    //Console.WriteLine(string.Join(",", row));
-                    sw.WriteLine(string.Join(",", row));
-                    valid_rows_num += 1;
-                    //break;
+                    string infoStr = "";
+                    if (i != 0 && j == 0) 
+                    { 
+                        continue; 
+                    }
+                    else if (i == 0 && j == 0) 
+                    {
+                        infoStr = string.Join(",", row) + ",date";
+                    }
+                    else 
+                    {
+                        infoStr = string.Join(",", row) + "," + dateStr;
+                        valid_rows_num += 1;
+                    }
+                    sw.WriteLine(infoStr);
                 }
                 skip_rows_num += parser.skip_rows_num;
-                //if (valid_rows_num > 184) { break; }
-                //break;
             }
             sw.Close();
 
